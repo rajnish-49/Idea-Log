@@ -4,7 +4,7 @@ import { MONGODB_URI } from "./config";
 // Connect to MongoDB
 mongoose.connect(MONGODB_URI)
   .then(() => console.log("✅ Connected to MongoDB"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+  .catch((err) => console.error("MongoDB connection error:", err));
 
 // Define schema
 const UserSchema = new Schema({

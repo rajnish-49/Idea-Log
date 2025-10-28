@@ -78,26 +78,30 @@ function CreateContentModal({
   if (!open) return null;
 
   return (
-    <div className="w-screen h-screen bg-black bg-opacity-50 fixed top-0 left-0 flex justify-center items-center z-50">
-      <div className="bg-white rounded-lg p-6 w-96 max-w-full mx-4">
-        <div onClick={onClose} className="flex justify-end cursor-pointer mb-4">
-          <Crossicon size="md" />
+    <div className="w-screen h-screen bg-slate-900 bg-opacity-50 fixed top-0 left-0 flex justify-center items-center z-50 backdrop-blur-sm">
+      <div className="bg-white rounded-2xl p-8 w-[28rem] max-w-full mx-4 shadow-xl border-2 border-sand-200">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-bold text-slate-900">Add New Content</h2>
+          <div
+            onClick={onClose}
+            className="cursor-pointer text-slate-500 hover:text-rose-600 transition-colors"
+          >
+            <Crossicon size="md" />
+          </div>
         </div>
 
-        <h2 className="text-xl font-semibold mb-4">Add New Content</h2>
-
-          <div className="space-y-4">
-            <Input
-              placeholder="Title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <Input
-              placeholder="Link (URL: YouTube, Twitter, Article, Image, Document, etc.)"
-              value={link}
-              onChange={(e) => setLink(e.target.value)}
-            />
-          </div>
+        <div className="space-y-4">
+          <Input
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <Input
+            placeholder="Link (URL: YouTube, Twitter, Article, Image, Document, etc.)"
+            value={link}
+            onChange={(e) => setLink(e.target.value)}
+          />
+        </div>
 
         <div className="flex justify-center mt-6">
           <Button

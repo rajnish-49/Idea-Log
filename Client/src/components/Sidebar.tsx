@@ -51,22 +51,22 @@ export function Sidebar({
       )}
 
       <div
-        className={`h-screen bg-white border-r border-gray-200 fixed left-0 top-0 z-50 transition-all duration-300 ${
+        className={`h-screen bg-white fixed left-0 top-0 z-50 transition-all duration-300 ${
           isOpen ? "w-72" : "w-0 lg:w-20"
         } overflow-hidden`}
       >
         {/* Header */}
-        <div className="px-6 py-6 border-b border-gray-100">
+        <div className="px-6 py-6 bg-gradient-to-br from-sand-50 to-white">
           <div
             className={`flex items-center gap-3 ${
               !isOpen && "lg:flex-col lg:gap-2"
             }`}
           >
-            <div className="text-indigo-600">
+            <div className="text-teal-600">
               <Ideaicon size="lg" />
             </div>
             {isOpen && (
-              <span className="text-2xl font-semibold text-gray-900 tracking-tight">
+              <span className="text-2xl font-bold text-slate-900 tracking-tight">
                 Idealog
               </span>
             )}
@@ -76,7 +76,7 @@ export function Sidebar({
         {/* Content */}
         {isOpen && (
           <div className="pt-6 px-4">
-            <div className="text-xs text-gray-500 font-medium uppercase tracking-wide mb-3 px-3">
+            <div className="text-xs text-slate-600 font-bold uppercase tracking-wider mb-3 px-3">
               Content Types
             </div>
             <div className="space-y-1">
@@ -123,6 +123,19 @@ export function Sidebar({
                 active={activeFilter === "link"}
               />
             </div>
+            <div className="mt-6 border-t border-sand-200 pt-4 px-1">
+              <button
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  localStorage.removeItem("user");
+                  window.location.href = "/signin";
+                }}
+                className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-sand-100 transition-colors"
+              >
+                <span className="text-lg"></span>
+                <span>Logout</span>
+              </button>
+            </div>
           </div>
         )}
 
@@ -133,8 +146,8 @@ export function Sidebar({
               onClick={() => handleFilterClick("all")}
               className={`p-2 rounded-lg transition-all ${
                 activeFilter === "all"
-                  ? "bg-indigo-50 text-indigo-600"
-                  : "text-gray-600 hover:bg-gray-100"
+                  ? "bg-teal-50 text-teal-600 shadow-sm"
+                  : "text-slate-600 hover:bg-sand-100"
               }`}
               title="All Content"
             >
@@ -144,8 +157,8 @@ export function Sidebar({
               onClick={() => handleFilterClick("youtube")}
               className={`p-2 rounded-lg transition-all ${
                 activeFilter === "youtube"
-                  ? "bg-indigo-50 text-indigo-600"
-                  : "text-gray-600 hover:bg-gray-100"
+                  ? "bg-teal-50 text-teal-600 shadow-sm"
+                  : "text-slate-600 hover:bg-sand-100"
               }`}
               title="Videos"
             >
@@ -155,8 +168,8 @@ export function Sidebar({
               onClick={() => handleFilterClick("twitter")}
               className={`p-2 rounded-lg transition-all ${
                 activeFilter === "twitter"
-                  ? "bg-indigo-50 text-indigo-600"
-                  : "text-gray-600 hover:bg-gray-100"
+                  ? "bg-teal-50 text-teal-600 shadow-sm"
+                  : "text-slate-600 hover:bg-sand-100"
               }`}
               title="Tweets"
             >
@@ -166,8 +179,8 @@ export function Sidebar({
               onClick={() => handleFilterClick("article")}
               className={`p-2 rounded-lg transition-all ${
                 activeFilter === "article"
-                  ? "bg-indigo-50 text-indigo-600"
-                  : "text-gray-600 hover:bg-gray-100"
+                  ? "bg-teal-50 text-teal-600 shadow-sm"
+                  : "text-slate-600 hover:bg-sand-100"
               }`}
               title="Articles"
             >
@@ -177,8 +190,8 @@ export function Sidebar({
               onClick={() => handleFilterClick("document")}
               className={`p-2 rounded-lg transition-all ${
                 activeFilter === "document"
-                  ? "bg-indigo-50 text-indigo-600"
-                  : "text-gray-600 hover:bg-gray-100"
+                  ? "bg-teal-50 text-teal-600 shadow-sm"
+                  : "text-slate-600 hover:bg-sand-100"
               }`}
               title="Documents"
             >
@@ -188,8 +201,8 @@ export function Sidebar({
               onClick={() => handleFilterClick("image")}
               className={`p-2 rounded-lg transition-all ${
                 activeFilter === "image"
-                  ? "bg-indigo-50 text-indigo-600"
-                  : "text-gray-600 hover:bg-gray-100"
+                  ? "bg-teal-50 text-teal-600 shadow-sm"
+                  : "text-slate-600 hover:bg-sand-100"
               }`}
               title="Images"
             >
@@ -199,12 +212,23 @@ export function Sidebar({
               onClick={() => handleFilterClick("link")}
               className={`p-2 rounded-lg transition-all ${
                 activeFilter === "link"
-                  ? "bg-indigo-50 text-indigo-600"
-                  : "text-gray-600 hover:bg-gray-100"
+                  ? "bg-teal-50 text-teal-600 shadow-sm"
+                  : "text-slate-600 hover:bg-sand-100"
               }`}
               title="Links"
             >
               <span className="text-xl">🔗</span>
+            </button>
+            <button
+              onClick={() => {
+                localStorage.removeItem("token");
+                localStorage.removeItem("user");
+                window.location.href = "/signin";
+              }}
+              className="p-2 rounded-lg transition-all text-slate-600 hover:bg-sand-100"
+              title="Logout"
+            >
+              <span className="text-xl">🚪</span>
             </button>
           </div>
         )}

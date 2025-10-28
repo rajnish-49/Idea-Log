@@ -15,10 +15,10 @@ export function Sidebaritem({
 }: SidebaritemProps) {
   return (
     <div
-      className={`flex items-center gap-3 py-2.5 px-3 cursor-pointer rounded-lg transition-colors duration-200 ${
+      className={`flex items-center gap-3 py-2.5 px-3 cursor-pointer rounded-lg transition-all duration-200 ${
         active
-          ? "bg-indigo-50 text-indigo-700 border-l-4 border-indigo-500 font-medium"
-          : "text-gray-700 hover:bg-indigo-50 hover:text-indigo-700"
+          ? "bg-teal-50 text-teal-700 border-l-4 border-teal-600 font-semibold shadow-sm"
+          : "text-slate-700 hover:bg-sand-100 hover:text-teal-700 font-medium"
       }`}
       onClick={onClick}
     >

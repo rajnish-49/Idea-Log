@@ -2,9 +2,9 @@ import type { ReactElement } from "react";
 
 const variantStyles = {
   primary:
-    "bg-gradient-to-r from-indigo-500 to-violet-500 text-white shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98]",
+    "bg-teal-600 text-white shadow-sm hover:shadow-md hover:bg-teal-700 active:bg-teal-800 transition-all duration-200",
   secondary:
-    "border border-indigo-200 text-indigo-600 hover:bg-indigo-50 bg-white",
+    "border-2 border-teal-200 text-teal-700 hover:bg-teal-50 bg-white hover:border-teal-300 transition-all duration-200",
 };
 
 const sizeStyles = {

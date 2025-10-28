@@ -5,14 +5,26 @@ export default {
     extend: {
       colors: {
         brand: {
-          primary: "#5046e4",
-          secondary: "#8784d7",
+          primary: "#0d9488",
+          secondary: "#14b8a6",
+          dark: "#0f766e",
+          light: "#5eead4",
         },
-        purple: {
-          200: "#d9ddee",
-          500: "#8784d7",
-          600: "#4f44e5",
+        sand: {
+          50: "#fdfbf7",
+          100: "#f8f4ed",
+          200: "#f0e8d9",
+          300: "#e8dcc5",
+          400: "#d4c5a3",
+          500: "#c0ae81",
         },
+        slate: {
+          850: "#1a2332",
+          900: "#0f172a",
+        },
+      },
+      fontFamily: {
+        sans: ["Inter", "system-ui", "sans-serif"],
       },
     },
   },

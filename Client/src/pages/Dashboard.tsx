@@ -96,8 +96,8 @@ export function Dashboard() {
 
   const handleContentAdded = async () => {
     console.log("Content added, refreshing list...");
-    setLoading(true); // loading 
-    await fetchContents(); // Refresh 
+    setLoading(true); // loading
+    await fetchContents(); // Refresh
     console.log("Refresh complete, contents state:", contents);
   };
 
@@ -159,7 +159,7 @@ export function Dashboard() {
       : contents.filter((content) => content.type === filterType);
 
   return (
-    <div className="min-h-screen bg-[#F9FAFB]">
+    <div className="min-h-screen bg-sand-50">
       <Sidebar
         onFilterChange={setFilterType}
         activeFilter={filterType}
@@ -172,10 +172,12 @@ export function Dashboard() {
         onClick={() => setSidebarOpen(!sidebarOpen)}
         className={`fixed top-4 ${
           sidebarOpen ? "left-64" : "left-12 lg:left-12"
-        } z-50 bg-white p-2 rounded-full shadow-sm hover:shadow-md transition-all duration-200 border border-gray-200 hover:border-indigo-300`}
+        } z-50 bg-white p-2 rounded-full shadow-sm hover:shadow-md transition-all duration-200 border border-sand-200 hover:border-teal-300`}
+        title={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
+        aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
       >
         <svg
-          className="w-5 h-5 text-gray-700"
+          className="w-5 h-5 text-slate-700"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -213,10 +215,10 @@ export function Dashboard() {
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-semibold text-gray-900 tracking-tight">
+              <h1 className="text-3xl font-bold text-slate-900 tracking-tight">
                 All Content
               </h1>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-slate-600 mt-1 font-medium">
                 {contents.length} {contents.length === 1 ? "item" : "items"}{" "}
                 saved
               </p>
@@ -270,14 +272,14 @@ export function Dashboard() {
 
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500"></div>
-            <p className="text-sm text-gray-500 mt-4">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600"></div>
+            <p className="text-sm text-slate-600 mt-4 font-medium">
               Loading your content...
             </p>
           </div>
         ) : filteredContents.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-16 bg-white rounded-xl shadow-sm border border-gray-100">
-            <p className="text-gray-500 text-sm">
+          <div className="flex flex-col items-center justify-center py-16 bg-white rounded-xl shadow-sm border-2 border-sand-200">
+            <p className="text-slate-600 text-sm font-medium">
               {contents.length === 0
                 ? "No content found"
                 : `No ${filterType} content found`}
@@ -299,19 +301,21 @@ export function Dashboard() {
 
         {/* Share Modal */}
         {showShareModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg p-6 w-96 max-w-full mx-4">
-              <h2 className="text-xl font-semibold mb-4">Share Your Brain</h2>
-              <p className="text-sm text-gray-600 mb-4">
+          <div className="fixed inset-0 bg-slate-900 bg-opacity-50 flex items-center justify-center z-50 backdrop-blur-sm">
+            <div className="bg-white rounded-2xl p-8 w-96 max-w-full mx-4 shadow-xl border-2 border-sand-200">
+              <h2 className="text-2xl font-bold mb-3 text-slate-900">
+                Share Your Brain
+              </h2>
+              <p className="text-sm text-slate-600 mb-6 font-medium">
                 Anyone with this link can view your shared content:
               </p>
-              <div className="flex gap-2 mb-4">
+              <div className="flex gap-2 mb-6">
                 <input
                   type="text"
                   value={shareLink || ""}
                   readOnly
                   aria-label="Share link"
-                  className="flex-1 px-4 py-2 border rounded bg-gray-50 text-sm"
+                  className="flex-1 px-4 py-2 border-2 border-sand-200 rounded-lg bg-sand-50 text-sm font-mono focus:outline-none focus:border-teal-400"
                 />
                 <Button
                   variant="primary"

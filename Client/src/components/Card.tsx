@@ -65,37 +65,37 @@ export function Card({ title, link, type, onDelete }: Cardprops) {
       case "youtube":
         return {
           icon: "🎥",
-          color: "bg-red-50 border-red-200",
+          color: "bg-rose-50 border-rose-300",
           label: "YouTube Video",
         };
       case "twitter":
         return {
           icon: "🐦",
-          color: "bg-blue-50 border-blue-200",
+          color: "bg-sky-50 border-sky-300",
           label: "Twitter/X Post",
         };
       case "document":
         return {
           icon: "📄",
-          color: "bg-yellow-50 border-yellow-200",
+          color: "bg-amber-50 border-amber-300",
           label: "Document",
         };
       case "article":
         return {
           icon: "📰",
-          color: "bg-green-50 border-green-200",
+          color: "bg-emerald-50 border-emerald-300",
           label: "Article",
         };
       case "image":
         return {
           icon: "🖼️",
-          color: "bg-purple-50 border-purple-200",
+          color: "bg-violet-50 border-violet-300",
           label: "Image",
         };
       default:
         return {
           icon: "🔗",
-          color: "bg-gray-50 border-gray-200",
+          color: "bg-slate-50 border-slate-300",
           label: "Link",
         };
     }
@@ -104,16 +104,16 @@ export function Card({ title, link, type, onDelete }: Cardprops) {
   const typeStyles = getTypeStyles();
 
   return (
-    <div className="p-4 bg-white shadow-sm hover:shadow-md transition-all duration-200 rounded-xl border border-gray-100 max-w-96 min-w-72 w-full hover:-translate-y-1">
+    <div className="p-5 bg-white shadow-sm hover:shadow-lg transition-all duration-300 rounded-2xl border-2 border-sand-200 max-w-96 min-w-72 w-full hover:-translate-y-1 hover:border-teal-300">
       {/* Header */}
       <div className="flex justify-between items-start">
-        <div className="flex items-center text-sm font-medium text-gray-700 flex-1">
+        <div className="flex items-center text-sm font-semibold text-slate-800 flex-1">
           <span className="line-clamp-1">{title}</span>
         </div>
         <div className="flex items-center gap-2 ml-2">
           <div
             onClick={copyToClipboard}
-            className="text-gray-500 hover:text-blue-600 cursor-pointer transition-colors"
+            className="text-slate-500 hover:text-teal-600 cursor-pointer transition-colors"
             title="Copy link"
           >
             <svg
@@ -133,7 +133,7 @@ export function Card({ title, link, type, onDelete }: Cardprops) {
           {onDelete && (
             <div
               onClick={onDelete}
-              className="text-gray-500 hover:text-red-600 cursor-pointer transition-colors"
+              className="text-slate-500 hover:text-rose-600 cursor-pointer transition-colors"
               title="Delete"
             >
               <Crossicon size="md" />
@@ -145,9 +145,9 @@ export function Card({ title, link, type, onDelete }: Cardprops) {
       {/* Content - Fixed height for uniformity */}
       <div className="mt-4">
         {type === "youtube" && videoId && (
-          <div className="relative w-full aspect-video">
+          <div className="relative w-full aspect-video rounded-lg overflow-hidden border-2 border-sand-200">
             <iframe
-              className="absolute top-0 left-0 w-full h-full rounded-md"
+              className="absolute top-0 left-0 w-full h-full"
               src={`https://www.youtube.com/embed/${videoId}`}
               title={title}
               frameBorder="0"
@@ -159,9 +159,9 @@ export function Card({ title, link, type, onDelete }: Cardprops) {
 
         {type === "twitter" && (
           <div
-            className={`relative w-full rounded-md border p-4 ${typeStyles.color}`}
+            className={`relative w-full rounded-lg border-2 p-4 ${typeStyles.color}`}
           >
-            <p className="text-sm text-gray-600 mb-2 flex items-center gap-2">
+            <p className="text-sm text-slate-700 mb-2 flex items-center gap-2 font-semibold">
               <span className="text-lg">{typeStyles.icon}</span>
               {typeStyles.label}
             </p>
@@ -169,7 +169,7 @@ export function Card({ title, link, type, onDelete }: Cardprops) {
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-500 hover:underline text-sm break-all"
+              className="text-teal-600 hover:text-teal-700 hover:underline text-sm break-all font-medium"
             >
               View on Twitter →
             </a>
@@ -178,9 +178,9 @@ export function Card({ title, link, type, onDelete }: Cardprops) {
 
         {type === "document" && (
           <div
-            className={`relative w-full rounded-md border p-4 ${typeStyles.color}`}
+            className={`relative w-full rounded-lg border-2 p-4 ${typeStyles.color}`}
           >
-            <p className="text-sm text-gray-600 mb-2 flex items-center gap-2">
+            <p className="text-sm text-slate-700 mb-2 flex items-center gap-2 font-semibold">
               <span className="text-lg">{typeStyles.icon}</span>
               {typeStyles.label}
             </p>
@@ -188,7 +188,7 @@ export function Card({ title, link, type, onDelete }: Cardprops) {
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-500 hover:underline text-sm break-all"
+              className="text-teal-600 hover:text-teal-700 hover:underline text-sm break-all font-medium"
             >
               Open Document →
             </a>
@@ -197,9 +197,9 @@ export function Card({ title, link, type, onDelete }: Cardprops) {
 
         {type === "article" && (
           <div
-            className={`relative w-full rounded-md border p-4 ${typeStyles.color}`}
+            className={`relative w-full rounded-lg border-2 p-4 ${typeStyles.color}`}
           >
-            <p className="text-sm text-gray-600 mb-2 flex items-center gap-2">
+            <p className="text-sm text-slate-700 mb-2 flex items-center gap-2 font-semibold">
               <span className="text-lg">{typeStyles.icon}</span>
               {typeStyles.label}
             </p>
@@ -207,7 +207,7 @@ export function Card({ title, link, type, onDelete }: Cardprops) {
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-500 hover:underline text-sm break-all"
+              className="text-teal-600 hover:text-teal-700 hover:underline text-sm break-all font-medium"
             >
               Read Article →
             </a>
@@ -216,7 +216,7 @@ export function Card({ title, link, type, onDelete }: Cardprops) {
 
         {type === "image" && (
           <div
-            className={`relative w-full rounded-md border overflow-hidden ${typeStyles.color}`}
+            className={`relative w-full rounded-lg border-2 overflow-hidden ${typeStyles.color}`}
           >
             <img
               src={link}
@@ -231,7 +231,7 @@ export function Card({ title, link, type, onDelete }: Cardprops) {
               }}
             />
             <div className="hidden p-4">
-              <p className="text-sm text-gray-600 mb-2 flex items-center gap-2">
+              <p className="text-sm text-slate-700 mb-2 flex items-center gap-2 font-semibold">
                 <span className="text-lg">{typeStyles.icon}</span>
                 {typeStyles.label}
               </p>
@@ -239,7 +239,7 @@ export function Card({ title, link, type, onDelete }: Cardprops) {
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-500 hover:underline text-sm break-all"
+                className="text-teal-600 hover:text-teal-700 hover:underline text-sm break-all font-medium"
               >
                 View Image →
               </a>
@@ -249,9 +249,9 @@ export function Card({ title, link, type, onDelete }: Cardprops) {
 
         {type === "link" && (
           <div
-            className={`relative w-full rounded-md border p-4 ${typeStyles.color}`}
+            className={`relative w-full rounded-lg border-2 p-4 ${typeStyles.color}`}
           >
-            <p className="text-sm text-gray-600 mb-2 flex items-center gap-2">
+            <p className="text-sm text-slate-700 mb-2 flex items-center gap-2 font-semibold">
               <span className="text-lg">{typeStyles.icon}</span>
               {typeStyles.label}
             </p>
@@ -259,7 +259,7 @@ export function Card({ title, link, type, onDelete }: Cardprops) {
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-500 hover:underline text-sm break-all"
+              className="text-teal-600 hover:text-teal-700 hover:underline text-sm break-all font-medium"
             >
               {link}
             </a>

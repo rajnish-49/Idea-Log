@@ -8,9 +8,15 @@ export function Signin() {
   const [loading, setLoading] = useState(false);
 
   const handleSignin = async () => {
+    if (!username || !password) {
+      alert("Please fill in all fields");
+      return;
+    }
+
     setLoading(true);
 
     try {
+      console.log("Sending signin request for username:", username);
       const response = await fetch("http://localhost:3000/api/v1/signin", {
         method: "POST",
         headers: {
@@ -23,27 +29,35 @@ export function Signin() {
       });
 
       const data = await response.json();
+      console.log("Signin response:", data);
 
-      if (response.ok) {
+      if (response.ok && data.token) {
         // Store the JWT token in localStorage
         localStorage.setItem("token", data.token);
-        alert("Signin successful!");
         // Redirect to dashboard
         window.location.href = "/dashboard";
       } else {
-        alert(data.error || "Signin failed");
+        alert(data.error || "Invalid username or password");
       }
     } catch (error) {
-      console.error("Error:", error);
-      alert("Something went wrong. Please try again.");
+      console.error("Error during signin:", error);
+      alert("Connection error. Please check your internet and try again.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="h-screen w-screen bg-gray-200 flex justify-center items-center">
-      <div className="bg-white rounded-xl border min-w-48 p-8">
+    <div className="h-screen w-screen bg-gradient-to-br from-sand-50 via-white to-teal-50 flex justify-center items-center">
+      <div className="bg-white rounded-2xl border-2 border-sand-200 shadow-xl min-w-96 p-10">
+        <div className="mb-8 text-center">
+          <h1 className="text-3xl font-bold text-slate-900 mb-2">
+            Welcome Back
+          </h1>
+          <p className="text-slate-600 font-medium">
+            Sign in to your Idealog account
+          </p>
+        </div>
         <Input
           placeholder="Username"
           onChange={(e) => setUsername(e.target.value)}
@@ -58,11 +72,19 @@ export function Signin() {
           <Button
             variant="primary"
             size="md"
-            text="Signin"
+            text="Sign In"
             Fullwidth={true}
             loading={loading}
             onClick={handleSignin}
           />
+        </div>
+        <div className="mt-6 text-center">
+          <a
+            href="/signup"
+            className="text-sm text-teal-600 hover:text-teal-700 font-medium hover:underline"
+          >
+            Don't have an account? Sign up
+          </a>
         </div>
       </div>
     </div>
